@@ -6,6 +6,10 @@ This is a forked version of the [Lilu](https://github.com/acidanthera/Lilu) plug
 ### Background / Why does this exist?
 There exists a USB UPS that is called the Commander Pro. When plugged into an internal USB header the Corsair Commander Pro also appears with the name "Commander Pro". macOS (lazily) checks the USB name instead of the vendor/product IDs and believes there is a UPS plugged in when it detects the Corsair Commander Pro.
 
+When you have a Corsair Commander Pro plugged in without any mapping/disabling, you're greeted with this wonderful message every time you boot into macOS:
+
+![stupid annoying error](https://i.imgur.com/SndZNbA.png)
+
 I got the idea for this after seeing [this thread](https://www.tonymacx86.com/threads/solved-catalina-thinks-my-corsair-commander-pro-is-a-ups.288458/) on tonymacx86, which showed how the fix shown (which basically overwrote `ioupsd` to sleep forever) did not work on Big Sur.
 
 In my case, I have a custom water cooled PC, with my fans and a temperature probe running thru the Commander Pro. I wanted to be able to monitor the fan RPM and my coolant temperature, to verify the fan curves stayed applied in macOS but also because I like having those temps readily accessible so I can see what the computer is "doing". CommanderProFix _does_ work on Big Sur, and as of yet nobody has yelled at me telling me this is a horrible idea or horrible way to fix this ¯\\\_(ツ)_/¯
