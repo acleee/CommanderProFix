@@ -35,6 +35,7 @@ struct RestrictEventsPolicy {
 			"/System/Library/CoreServices/ExpansionSlotNotification",
 			"/System/Library/CoreServices/MemorySlotNotification",
 			"/usr/libexec/firmwarecheckers/eficheck/eficheck",
+			"/usr/libexec/ioupsd",
 		};
 
 		char pathbuf[MAXPATHLEN];
