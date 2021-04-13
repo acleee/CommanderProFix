@@ -1,9 +1,9 @@
 //
-//  RestrictEvents.cpp
-//  RestrictEvents
+//  CommanderProFix.cpp
+//  CommanderProFix
 //
-//  Copyright © 2020 vit9696. All rights reserved.
-//
+//  Copyright © 2021 aclee_. All rights reserved.
+//  Thank you to vit9696 for making CommanderProFix and making this possible.
 
 #include <IOKit/IOService.h>
 #include <Headers/kern_api.hpp>
@@ -24,7 +24,7 @@ static const char *bootargBeta[] {
 
 static bool verboseProcessLogging;
 
-struct RestrictEventsPolicy {
+struct CommanderProFixPolicy {
 
 	/**
 	 *  Policy to restrict blacklisted process execution
@@ -32,10 +32,7 @@ struct RestrictEventsPolicy {
 	static int policyCheckExecve(kauth_cred_t cred, struct vnode *vp, struct vnode *scriptvp, struct label *vnodelabel, struct label *scriptlabel, struct label *execlabel, struct componentname *cnp, u_int *csflags, void *macpolicyattr, size_t macpolicyattrlen) {
 
 		static const char *procBlacklist[] {
-			"/System/Library/CoreServices/ExpansionSlotNotification",
-			"/System/Library/CoreServices/MemorySlotNotification",
-			"/usr/libexec/firmwarecheckers/eficheck/eficheck",
-			"/usr/libexec/ioupsd",
+            "/usr/libexec/ioupsd",
 		};
 
 		char pathbuf[MAXPATHLEN];
@@ -89,10 +86,10 @@ struct RestrictEventsPolicy {
 	/**
 	 Policy constructor.
 	 */
-	RestrictEventsPolicy() : policy(xStringify(PRODUCT_NAME), fullName, &policyOps) {}
+	CommanderProFixPolicy() : policy(xStringify(PRODUCT_NAME), fullName, &policyOps) {}
 };
 
-static RestrictEventsPolicy restrictEventsPolicy;
+static CommanderProFixPolicy CommanderProFixPolicy;
 
 PluginConfiguration ADDPR(config) {
 	xStringify(PRODUCT_NAME),
@@ -109,6 +106,6 @@ PluginConfiguration ADDPR(config) {
 	[]() {
 		DBGLOG("rev", "restriction policy plugin loaded");
 		verboseProcessLogging = checkKernelArgument("-revproc");
-		restrictEventsPolicy.policy.registerPolicy();
+		CommanderProFixPolicy.policy.registerPolicy();
 	}
 };

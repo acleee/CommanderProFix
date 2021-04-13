@@ -1,5 +1,5 @@
-RestrictEvents Changelog
+CommanderProFix Changelog
 ========================
 
-#### v1.0.0
-- Initial release
+#### v1.0
+- Initial fork/release
