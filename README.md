@@ -1,6 +1,9 @@
 CommanderProFix
 ==============
 
+
+*NOTE: This kext was made with my specific use-case and setup in mind. It might work for you, it might not, but the code is provided so that you have the ability to review and debug as needed. No support on my end is provided.*
+
 This is a forked version of the [Lilu](https://github.com/acidanthera/Lilu) plugin [RestrictEvents](https://github.com/acidanthera/RestrictEvents) that has been modified to only prevent  `/usr/libexec/ioupsd` from running. This removes the "UPS battery backup" warning at the cost of disabling macOS's UPS support.
 
 ### Background / Why does this exist?
